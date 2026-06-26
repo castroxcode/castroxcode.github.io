@@ -1,331 +1,648 @@
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currículo - Thiago de Castro Ferreira</title>
+    <title>Thiago Castro — Analista de Sistemas & Desenvolvedor Full Stack</title>
+    <meta name="description" content="Portfólio profissional de Thiago de Castro Ferreira — Analista de Sistemas, Desenvolvedor Full Stack com experiência em Java, Spring Boot, React e Vue.js">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #34495e;
-            --accent-color: #3498db;
-            --text-color: #333;
-            --bg-color: #f4f7f6;
-            --white: #ffffff;
-        }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-        }
+:root {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #111118;
+    --bg-card: #1a1a2e;
+    --bg-card-hover: #1f1f35;
+    --text-primary: #f0f0f5;
+    --text-secondary: #a0a0b8;
+    --text-muted: #6b6b80;
+    --accent: #00FFA7;
+    --accent-hover: #00cc86;
+    --accent-glow: rgba(0, 255, 167, 0.3);
+    --gradient-1: linear-gradient(135deg, #00FFA7, #00d4ff);
+    --gradient-2: linear-gradient(135deg, #00d4ff, #00FFA7);
+    --border: rgba(255, 255, 255, 0.06);
+    --radius: 16px;
+    --radius-sm: 8px;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: var(--white);
-            padding: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
+[data-theme="light"] {
+    --bg-primary: #f8f9fc;
+    --bg-secondary: #eef0f5;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f0f1f5;
+    --text-primary: #1a1a2e;
+    --text-secondary: #4a4a6a;
+    --text-muted: #8888a0;
+    --border: rgba(0, 0, 0, 0.08);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
 
-        header {
-            text-align: center;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
-        h1 {
-            color: var(--primary-color);
-            margin: 0;
-            font-size: 2.5em;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.7;
+    overflow-x: hidden;
+    transition: background-color var(--transition), color var(--transition);
+}
 
-        .subtitle {
-            color: var(--primary-color);
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-top: 5px;
-        }
+a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
+a:hover { color: var(--accent-hover); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        .contact-info {
-            margin-top: 15px;
-            font-size: 0.9em;
-            color: var(--secondary-color);
-        }
+/* ALTERNATING SECTIONS */
+.section { padding: 100px 0; }
+.section-dark { background: var(--bg-primary); }
+.section-alt { background: var(--bg-secondary); }
 
-        .contact-info a {
-            color: var(--accent-color);
-            text-decoration: none;
-        }
+/* NAVBAR */
+.navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: background var(--transition);
+}
+[data-theme="light"] .navbar { background: rgba(248, 249, 252, 0.9); }
+.navbar .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.nav-logo {
+    font-size: 1.4rem; font-weight: 800;
+    background: var(--gradient-1); -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; background-clip: text;
+}
+.nav-links { display: flex; gap: 32px; align-items: center; list-style: none; }
+.nav-links a {
+    color: var(--text-secondary); font-size: 0.9rem; font-weight: 500;
+    position: relative; transition: color var(--transition);
+}
+.nav-links a:hover { color: var(--text-primary); }
+.nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 2px; background: var(--gradient-1);
+    transition: width var(--transition);
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+.theme-toggle {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--bg-card);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all var(--transition); color: var(--text-primary);
+}
+.theme-toggle:hover { border-color: var(--accent); transform: rotate(180deg); }
+.mobile-toggle {
+    display: none; background: none; border: none;
+    color: var(--text-primary); font-size: 1.5rem; cursor: pointer;
+}
 
-        section {
-            margin-bottom: 30px;
-        }
+/* HERO */
+.hero {
+    min-height: 100vh; display: flex; align-items: center;
+    position: relative; overflow: hidden; padding-top: 72px;
+    background: var(--bg-primary);
+}
+.hero::before {
+    content: ''; position: absolute; top: -50%; right: -30%;
+    width: 800px; height: 800px; border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    animation: float 8s ease-in-out infinite;
+}
+.hero::after {
+    content: ''; position: absolute; bottom: -40%; left: -20%;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.12) 0%, transparent 70%);
+    animation: float 10s ease-in-out infinite reverse;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(5deg); }
+}
+.hero-content { position: relative; z-index: 1; width: 100%; }
+.hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px; border-radius: 50px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 24px;
+}
+.hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+.hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+.hero h1 .gradient {
+    background: var(--gradient-1); -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero .subtitle { font-size: clamp(1.2rem, 2.5vw, 1.8rem); font-weight: 300; color: var(--text-secondary); margin-bottom: 24px; }
+.hero .description { font-size: 1.05rem; color: var(--text-muted); max-width: 600px; margin-bottom: 36px; }
+.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px; border-radius: 50px; font-weight: 600;
+    font-size: 0.95rem; transition: all var(--transition); border: none; cursor: pointer;
+}
+.btn-primary { background: var(--gradient-1); color: #0a0a0f; box-shadow: 0 4px 20px var(--accent-glow); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); color: #0a0a0f; }
+.btn-secondary { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); }
+.btn-secondary:hover { border-color: var(--accent); transform: translateY(-2px); color: var(--text-primary); }
 
-        h2 {
-            color: var(--primary-color);
-            border-left: 5px solid var(--accent-color);
-            padding-left: 15px;
-            font-size: 1.5em;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            background-color: #f9f9f9;
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
+/* SECTIONS */
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-header h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 12px; }
+.section-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 500px; margin: 0 auto; }
 
-        .summary p {
-            text-align: justify;
-        }
+/* PROJECTS */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 32px; }
+.project-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column;
+}
+.project-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 60px rgba(0, 255, 167, 0.1), 0 8px 32px rgba(0,0,0,0.4);
+    border-color: var(--accent);
+}
+.project-card-preview {
+    position: relative; width: 100%; height: 220px;
+    overflow: hidden; background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+}
+.project-card-preview img {
+    width: 100%; height: 100%; object-fit: cover; object-position: top;
+    transition: transform 0.6s ease;
+}
+.project-card:hover .project-card-preview img { transform: scale(1.05); }
+.project-card-preview .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(10,10,15,0.85));
+    opacity: 0; transition: opacity var(--transition);
+    display: flex; align-items: flex-end; justify-content: center; padding-bottom: 20px;
+}
+.project-card:hover .project-card-preview .overlay { opacity: 1; }
+.overlay-btn {
+    padding: 10px 22px; border-radius: 50px;
+    background: var(--accent); color: #0a0a0f;
+    font-size: 0.85rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 6px;
+}
+.project-card-content { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+.project-card-content h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+.project-card-content p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 16px; flex: 1; }
+.project-tech { display: flex; flex-wrap: wrap; gap: 8px; }
+.project-tech span {
+    padding: 5px 12px; border-radius: 6px; font-size: 0.75rem;
+    background: rgba(0, 255, 167, 0.08); color: var(--accent);
+    font-family: 'JetBrains Mono', monospace; border: 1px solid rgba(0, 255, 167, 0.15);
+}
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
+/* SKILLS */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; }
+.skill-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px;
+    transition: all var(--transition); position: relative; overflow: hidden;
+}
+.skill-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 100%; height: 3px; background: var(--gradient-1);
+    transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
+}
+.skill-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--shadow); }
+.skill-card:hover::before { transform: scaleX(1); }
+.skill-card-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(0, 255, 167, 0.1); border: 1px solid rgba(0, 255, 167, 0.2);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+}
+.skill-card-icon svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.skill-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-tag {
+    padding: 4px 12px; border-radius: 50px; font-size: 0.8rem;
+    background: rgba(0, 255, 167, 0.1); color: var(--accent);
+    border: 1px solid rgba(0, 255, 167, 0.2); font-family: 'JetBrains Mono', monospace;
+}
 
-        .skill-category {
-            background-color: #f9f9f9;
-            padding: 10px;
-            border-radius: 4px;
-        }
+/* TIMELINE */
+.timeline { position: relative; max-width: 800px; margin: 0 auto; }
+.timeline::before {
+    content: ''; position: absolute; left: 20px; top: 0;
+    width: 2px; height: 100%; background: linear-gradient(to bottom, var(--accent), transparent);
+}
+.timeline-item { position: relative; padding-left: 60px; margin-bottom: 48px; }
+.timeline-dot {
+    position: absolute; left: 12px; top: 6px; width: 18px; height: 18px; border-radius: 50%;
+    background: var(--gradient-1); box-shadow: 0 0 0 4px var(--bg-primary), 0 0 0 6px var(--accent);
+}
+.timeline-content {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px; transition: all var(--transition);
+}
+.timeline-content:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.timeline-date { font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+.timeline-content h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+.timeline-content p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 12px; }
+.timeline-content ul { list-style: none; padding: 0; }
+.timeline-content ul li { position: relative; padding-left: 20px; color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 6px; }
+.timeline-content ul li::before { content: '\25B9'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
 
-        .skill-category strong {
-            display: block;
-            color: var(--secondary-color);
-            margin-bottom: 5px;
-        }
+/* EDUCATION */
+.education-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; max-width: 900px; margin: 0 auto; }
+.education-card {
+    flex: 0 1 calc(50% - 12px);
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px;
+    transition: all var(--transition); text-align: center;
+}
+.education-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.education-card .edu-icon {
+    width: 48px; height: 48px; border-radius: 12px; margin: 0 auto 16px;
+    background: rgba(0, 255, 167, 0.1); border: 1px solid rgba(0, 255, 167, 0.2);
+    display: flex; align-items: center; justify-content: center;
+}
+.education-card .edu-icon svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.education-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.education-card p { color: var(--text-muted); font-size: 0.9rem; }
 
-        .experience-item, .project-item {
-            margin-bottom: 20px;
-        }
+/* CONTACT */
+.contact-content { text-align: center; max-width: 600px; margin: 0 auto; }
+.contact-content p { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 32px; }
+.contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.contact-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 24px; border-radius: 50px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text-primary); font-weight: 500; transition: all var(--transition);
+}
+.contact-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); color: var(--text-primary); }
+.contact-link svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.contact-link-email { flex: 0 0 100%; justify-content: center; max-width: 320px; }
+.contact-links-row { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; width: 100%; }
 
-        .project-details {
-            padding-left: 20px;
-            border-left: 3px solid #ececec;
-        }
+/* FOOTER */
+footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
+footer .heart { color: #ef4444; }
 
-        .project-details p {
-            margin: 5px 0;
-        }
+/* ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
 
-        .project-details .project-link {
-            margin-top: 3px;
-        }
+/* MOBILE NAV */
+.mobile-nav { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--bg-secondary); border-bottom: 1px solid var(--border); padding: 24px; z-index: 999; }
+.mobile-nav.open { display: block; }
+.mobile-nav a { display: block; padding: 12px 0; color: var(--text-secondary); font-weight: 500; border-bottom: 1px solid var(--border); }
+.mobile-nav a:last-child { border-bottom: none; }
 
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .item-tech {
-            font-style: italic;
-            color: var(--accent-color);
-            font-size: 0.9em;
-            margin-top: 5px;
-        }
-
-        .project-link {
-            font-size: 0.9em;
-            margin-top: 5px;
-        }
-
-        ul {
-            margin-top: 5px;
-            padding-left: 20px;
-        }
-
-        .education-item {
-            margin-bottom: 10px;
-        }
-
-        footer {
-            text-align: center;
-            font-size: 0.8em;
-            color: #777;
-            margin-top: 40px;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-        }
-
-        @media print {
-            body {
-                background-color: var(--white);
-                padding: 0;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .container {
-                box-shadow: none;
-                width: 100%;
-                padding: 0;
-            }
-            .projects {
-                page-break-before: always;
-            }
-        }
+/* RESPONSIVE */
+@media (max-width: 968px) { .nav-links { display: none; } .mobile-toggle { display: block; } .hero h1 { font-size: clamp(2rem, 8vw, 3.5rem); } }
+@media (max-width: 768px) { .section { padding: 60px 0; } .skills-grid { grid-template-columns: 1fr; } .projects-grid { grid-template-columns: 1fr; } .hero-buttons { flex-direction: column; align-items: flex-start; } }
+@media (max-width: 480px) { .container { padding: 0 16px; } .education-grid .education-card { flex: 0 1 100%; } .contact-links { flex-direction: column; align-items: center; } }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <header>
-            <h1>THIAGO DE CASTRO FERREIRA</h1>
-            <div class="subtitle">ANALISTA DE SISTEMAS</div>
-            <div class="contact-info">
-                castroxcode@gmail.com | (99) 98173-6333 | Imperatriz – MA
-            </div>
-            <div class="contact-info">
-                <a href="https://www.linkedin.com/in/castroxcode">linkedin.com/in/castroxcode</a> | <a href="https://github.com/castroxcode">github.com/castroxcode</a>
-            </div>
-        </header>
-
-        <section class="summary">
-            <h2>Resumo Profissional</h2>
-            <p>
-                Analista de Sistemas com experiência em <strong>Java e Spring Boot</strong>, focado no desenvolvimento de aplicações escaláveis e na integração entre sistemas. Atuo com <strong>APIs REST</strong>, <strong>mensageria (RabbitMQ)</strong> e bancos de dados <strong>SQL Server e PostgreSQL</strong>, garantindo performance e confiabilidade nas soluções entregues. No frontend, trabalho com <strong>Vue.js</strong> e <strong>React</strong>, construindo interfaces funcionais e responsivas. Possuo vivência com <strong>Elasticsearch</strong>, <strong>Docker</strong> e ambientes Linux em produção. Formado em Sistemas de Informação com pós-graduação em Engenharia de Software, meu foco é transformar regras de negócio complexas em sistemas bem estruturados, automatizando processos e reduzindo retrabalho operacional.
-            </p>
-        </section>
-
-        <section class="skills">
-            <h2>Competências Técnicas</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <strong>Backend & Frameworks</strong>
-                    Java, Spring Boot, Python, LangChain, Next.js
-                </div>
-                <div class="skill-category">
-                    <strong>Frontend</strong>
-                    Vue.js, React, TypeScript, Tailwind CSS
-                </div>
-                <div class="skill-category">
-                    <strong>Banco de Dados</strong>
-                    PostgreSQL, Microsoft SQL Server, Redis
-                </div>
-                <div class="skill-category">
-                    <strong>APIs & Mensageria</strong>
-                    APIs REST, RabbitMQ
-                </div>
-                <div class="skill-category">
-                    <strong>DevOps & Busca</strong>
-                    Linux, Docker, GitHub, Elasticsearch
-                </div>
-                <div class="skill-category">
-                    <strong>Outras Ferramentas</strong>
-                    Visual Studio Code, Supabase, Figma
-                </div>
-            </div>
-        </section>
-
- 
-        <section class="experience">
-            <h2>Experiência Profissional</h2>
-            <div class="experience-item">
-                <div class="item-header">
-                    <span>Desenvolvedor Full Stack / Analista de Sistemas (2015 – Presente)</span>
-                </div>
-
-                <p>
-                    Desenvolvimento de sistemas web e soluções para automação de processos,
-                    atuando desde o levantamento de requisitos até a implantação e manutenção
-                    de aplicações, com foco em performance, escalabilidade e integração entre sistemas.
-                </p>
-
-                <ul>
-                    <li>Construção e consumo de <strong>APIs REST</strong> para integração entre sistemas, CRMs, serviços externos e plataformas de terceiros.</li>
-                    <li>Modelagem e manutenção de bancos de dados <strong>PostgreSQL</strong>, incluindo consultas, otimização e estruturação de dados.</li>
-                    <li>Desenvolvimento de sistemas corporativos para gestão comercial, controle de estoque, vendas e automação de processos.</li>
-                    <li>Implantação de aplicações em Docker, utilização de Git e acompanhamento de todo o ciclo de desenvolvimento.</li>
-                </ul>
-            </div>
-        </section>
-
-
-        <section class="projects">
-            <h2>Projetos Relevantes</h2>
-            <div class="project-item">
-                <div class="item-header">
-                    <span>IA Escala — Plataforma SaaS de Inteligência Artificial</span> 
-                </div>
-                <div class="project-details">
-                    <div class="item-tech">Vue.js, React, TypeScript, Tailwind, Python, Supabase</div>
-                    <p>Plataforma completa para atendimento ao cliente e CRM com automação operacional. Integra chat estilo WhatsApp (API Oficial/Não Oficial), agenda, pipeline comercial, base de conhecimento com RAG, controle de acesso RBAC e painel de observabilidade de agentes.</p>
-                    <div class="project-link">🔗 <a href="https://iaescala.com.br">iaescala.com.br</a></div>
-                </div>
-            </div>
-            <div class="project-item">
-                <div class="item-header">
-                    <span>AgendaIN — Gestão de Clínicas e Salões</span>
-                </div>
-                <div class="project-details">
-                    <div class="item-tech">React, TypeScript, Vite, Tailwind, Supabase</div>
-                    <p>Sistema SaaS web multi-tenant de gestão completa. Inclui agenda visual com status por cor, PDV, controle de caixa, fichas de anamnese personalizáveis, gestão de comissões, financeiro, integração com WhatsApp para lembretes e API pública.</p>
-                    <div class="project-link">🔗 <a href="https://agendain.com.br">agendain.com.br</a></div>
-                </div>
-            </div>
-            <div class="project-item">
-                <div class="item-header">
-                    <span>Djuju Moda - Controle de Estoque</span>
-                </div>
-                <div class="project-details">
-                    <div class="item-tech">React, TypeScript, Tailwind, Supabase</div>
-                    <p>Sistema focado na otimização de controle de estoque, compras, transferências e vendas, fornecendo visão analítica detalhada do negócio.</p>
-                    <div class="project-link">🔗 <a href="https://djuju.egestor.pro">djuju.egestor.pro</a></div>
-                </div>
-            </div>
-            <div class="project-item">
-                <div class="item-header">
-                    <span>RR Calçados — Gestão Loja de Calçados</span>
-                </div>
-                <div class="project-details">
-                    <div class="item-tech">React, TypeScript, Tailwind, Supabase</div>
-                    <p>Sistema SaaS web multi-tenant de gestão completa. Inclui agenda visual com status por cor, PDV, controle de caixa, fichas de anamnese personalizáveis, gestão de comissões, financeiro, integração com WhatsApp para lembretes e API pública.</p>
-                    <div class="project-link">🔗 <a href="https://rogerio.egestor.pro">rogerio.egestor.pro</a></div>
-                </div>
-            </div>
-            <div class="project-item">
-                <div class="item-header">
-                    <span>Transmar — Site Institucional para Tranportadora</span>
-                </div>
-                <div class="project-details">
-                    <div class="item-tech">HTML, CSS, Javacript</div>
-                    <p>Site institucional para a Transportadora Transmar com foco em alta performance, responsividade e conversão de leads.</p>
-                    <div class="project-link">🔗 <a href="https://transportadoratransmar.com.br">transportadoratransmar.com.br</a></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="education">
-            <h2>Formação Acadêmica</h2>
-            <div class="education-item">
-                <strong>Bacharel em Sistemas de Informação</strong>
-                <div class="item-tech">Faculdade Facimp</div>
-            </div>
-            <div class="education-item">
-                <strong>MBA em Empreendedorismo e Criação de Startups</strong>
-                <div class="item-tech">Faculdade Unyleya</div>
-            </div>
-            <div class="education-item">
-                <strong>Pós-graduação em Engenharia de Software</strong>
-                <div class="item-tech">Faculdade Focus</div>
-            </div>            
-        </section>
-
-        <section class="additional">
-            <h2>Informações Adicionais</h2>
-            <ul>
-                <li>Disponibilidade imediata para trabalho <strong>Presencial, Híbrido ou Home Office</strong>.</li>
-                <li>Perfil adaptável a novas tecnologias e metodologias ágeis.</li>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">&lt;TC /&gt;</a>
+            <ul class="nav-links">
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#skills">Compet&ecirc;ncias</a></li>
+                <li><a href="#experiencia">Experi&ecirc;ncia</a></li>
+                <li><a href="#formacao">Forma&ccedil;&atilde;o</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
-        </section>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
 
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#projetos" onclick="closeMobileNav()">Projetos</a>
+        <a href="#skills" onclick="closeMobileNav()">Compet&ecirc;ncias</a>
+        <a href="#experiencia" onclick="closeMobileNav()">Experi&ecirc;ncia</a>
+        <a href="#formacao" onclick="closeMobileNav()">Forma&ccedil;&atilde;o</a>
+        <a href="#contato" onclick="closeMobileNav()">Contato</a>
     </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="dot"></span>
+                    Dispon&iacute;vel para novos projetos
+                </div>
+                <h1>Ol&aacute;, sou <span class="gradient">Thiago Castro</span></h1>
+                <p class="subtitle">Analista de Sistemas &amp; Desenvolvedor Full Stack</p>
+                <p class="description">
+                    Transformo regras de neg&oacute;cio complexas em sistemas bem estruturados, 
+                    escal&aacute;veis e de alta performance. +6 anos construindo solu&ccedil;&otilde;es que 
+                    automatizam processos e geram valor real.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projetos" class="btn btn-primary">
+                        <span>Ver Projetos</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#contato" class="btn btn-secondary">
+                        <span>Entre em Contato</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section class="section section-alt" id="projetos">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Projetos</h2>
+                <p>Solu&ccedil;&otilde;es que desenvolvi e coloquei em produ&ccedil;&atilde;o</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card reveal">
+                    <div class="project-card-preview">
+                        <img src="assets/iaescala.png" alt="IA Escala" loading="lazy">
+                        <a href="https://iaescala.com.br" target="_blank" rel="noopener" class="overlay">
+                            <span class="overlay-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                Visitar Site
+                            </span>
+                        </a>
+                    </div>
+                    <div class="project-card-content">
+                        <h3>IA Escala &mdash; Plataforma SaaS de IA</h3>
+                        <p>Plataforma completa para atendimento ao cliente e CRM com automa&ccedil;&atilde;o operacional. Chat WhatsApp, pipeline comercial, RAG e observabilidade de agentes.</p>
+                        <div class="project-tech">
+                            <span>Vue.js</span><span>React</span><span>TypeScript</span><span>Python</span><span>Supabase</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="project-card-preview">
+                        <img src="assets/agendain.png" alt="AgendaIN" loading="lazy">
+                        <a href="https://agendain.com.br" target="_blank" rel="noopener" class="overlay">
+                            <span class="overlay-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                Visitar Site
+                            </span>
+                        </a>
+                    </div>
+                    <div class="project-card-content">
+                        <h3>AgendaIN &mdash; Gest&atilde;o de Cl&iacute;nicas e Sal&otilde;es</h3>
+                        <p>Sistema SaaS multi-tenant com agenda visual, PDV, controle de caixa, anamnese, comiss&otilde;es e integra&ccedil;&atilde;o WhatsApp.</p>
+                        <div class="project-tech">
+                            <span>React</span><span>TypeScript</span><span>Vite</span><span>Tailwind</span><span>Supabase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-card-preview">
+                        <img src="assets/djuju.png" alt="Djuju Moda" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Djuju Moda &mdash; Controle de Estoque</h3>
+                        <p>Sistema para otimiza&ccedil;&atilde;o de estoque, compras, transfer&ecirc;ncias e vendas com vis&atilde;o anal&iacute;tica detalhada do neg&oacute;cio.</p>
+                        <div class="project-tech">
+                            <span>React</span><span>TypeScript</span><span>Tailwind</span><span>Supabase</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="project-card-preview">
+                        <img src="assets/rr-calcados.png" alt="RR Calcados" loading="lazy">
+                    </div>
+                    <div class="project-card-content">
+                        <h3>RR Cal&ccedil;ados &mdash; Gest&atilde;o de Loja</h3>
+                        <p>Sistema SaaS multi-tenant com PDV, controle de caixa, gest&atilde;o de comiss&otilde;es, financeiro e integra&ccedil;&atilde;o WhatsApp.</p>
+                        <div class="project-tech">
+                            <span>React</span><span>TypeScript</span><span>Tailwind</span><span>Supabase</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="project-card-preview">
+                        <img src="assets/transmar.png" alt="Transmar" loading="lazy">
+                        <a href="https://transportadoratransmar.com.br" target="_blank" rel="noopener" class="overlay">
+                            <span class="overlay-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                Visitar Site
+                            </span>
+                        </a>
+                    </div>
+                    <div class="project-card-content">
+                        <h3>Transmar &mdash; Site Institucional</h3>
+                        <p>Site institucional para transportadora com foco em alta performance, responsividade e convers&atilde;o de leads.</p>
+                        <div class="project-tech">
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section section-dark" id="skills">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Compet&ecirc;ncias</h2>
+                <p>Tecnologias e ferramentas que domino</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card reveal">
+                    <div class="skill-card-icon">
+                        <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h3>Backend &amp; Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span><span class="skill-tag">Spring Boot</span><span class="skill-tag">Python</span><span class="skill-tag">LangChain</span><span class="skill-tag">Next.js</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal">
+                    <div class="skill-card-icon">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                    </div>
+                    <h3>Frontend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Vue.js</span><span class="skill-tag">React</span><span class="skill-tag">TypeScript</span><span class="skill-tag">Tailwind CSS</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal">
+                    <div class="skill-card-icon">
+                        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                    </div>
+                    <h3>Banco de Dados</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PostgreSQL</span><span class="skill-tag">SQL Server</span><span class="skill-tag">Redis</span><span class="skill-tag">Supabase</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal">
+                    <div class="skill-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                    </div>
+                    <h3>APIs &amp; Mensageria</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">REST APIs</span><span class="skill-tag">RabbitMQ</span><span class="skill-tag">Elasticsearch</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal">
+                    <div class="skill-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3>DevOps &amp; Infra</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Docker</span><span class="skill-tag">Linux</span><span class="skill-tag">GitHub</span><span class="skill-tag">CI/CD</span>
+                    </div>
+                </div>
+                <div class="skill-card reveal">
+                    <div class="skill-card-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    </div>
+                    <h3>IA &amp; Automa&ccedil;&atilde;o</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">LangChain</span><span class="skill-tag">RAG</span><span class="skill-tag">Agentes IA</span><span class="skill-tag">Automa&ccedil;&atilde;o</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section class="section section-alt" id="experiencia">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Experi&ecirc;ncia</h2>
+                <p>Minha trajet&oacute;ria profissional</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2015 &mdash; Presente</div>
+                        <h3>Desenvolvedor Full Stack / Analista de Sistemas</h3>
+                        <p>Desenvolvimento de sistemas web e solu&ccedil;&otilde;es para automa&ccedil;&atilde;o de processos, atuando desde o levantamento de requisitos at&eacute; a implanta&ccedil;&atilde;o e manuten&ccedil;&atilde;o de aplica&ccedil;&otilde;es.</p>
+                        <ul>
+                            <li>Constru&ccedil;&atilde;o e consumo de APIs REST para integra&ccedil;&atilde;o entre sistemas, CRMs e plataformas de terceiros</li>
+                            <li>Modelagem e manuten&ccedil;&atilde;o de bancos de dados PostgreSQL com otimiza&ccedil;&atilde;o de consultas</li>
+                            <li>Desenvolvimento de sistemas corporativos para gest&atilde;o comercial, estoque e automa&ccedil;&atilde;o</li>
+                            <li>Implanta&ccedil;&atilde;o de aplica&ccedil;&otilde;es em Docker e acompanhamento de todo o ciclo de desenvolvimento</li>
+                            <li>Cria&ccedil;&atilde;o de plataformas SaaS com arquitetura multi-tenant</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMACAO -->
+    <section class="section section-dark" id="formacao">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Forma&ccedil;&atilde;o</h2>
+                <p>Minha base acad&ecirc;mica</p>
+            </div>
+            <div class="education-grid">
+                <div class="education-card reveal">
+                    <div class="edu-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 2 3 6 3s6-2 6-3v-5"/></svg>
+                    </div>
+                    <h3>Bacharel em Sistemas de Informa&ccedil;&atilde;o</h3>
+                    <p>Faculdade Facimp</p>
+                </div>
+                <div class="education-card reveal">
+                    <div class="edu-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+                    </div>
+                    <h3>MBA em Empreendedorismo e Cria&ccedil;&atilde;o de Startups</h3>
+                    <p>Faculdade Unyleya</p>
+                </div>
+                <div class="education-card reveal">
+                    <div class="edu-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3>P&oacute;s-gradua&ccedil;&atilde;o em Engenharia de Software</h3>
+                    <p>Faculdade Focus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="section section-alt" id="contato">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Contato</h2>
+                <p>Vamos conversar sobre seu pr&oacute;ximo projeto?</p>
+            </div>
+            <div class="contact-content reveal">
+                <p>Estou dispon&iacute;vel para trabalho presencial, h&iacute;brido ou home office. Se voc&ecirc; tem um projeto em mente ou quer trocar uma ideia, entre em contato.</p>
+                <div class="contact-links">
+                    <a href="mailto:castroxcode@gmail.com" class="contact-link contact-link-email">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+                        <span>castroxcode@gmail.com</span>
+                    </a>
+                    <div class="contact-links-row">
+                        <a href="https://www.linkedin.com/in/castroxcode" target="_blank" rel="noopener" class="contact-link">
+                            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/castroxcode" target="_blank" rel="noopener" class="contact-link">
+                            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://wa.me/5599981736333" target="_blank" rel="noopener" class="contact-link">
+                            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Feito com <span class="heart">&hearts;</span> por Thiago Castro &mdash; 2026</p>
+    </footer>
+
+    <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme') || 'dark';
+    if (saved === 'light') html.setAttribute('data-theme', 'light');
+    themeToggle.addEventListener('click', () => {
+        const isLight = html.getAttribute('data-theme') === 'light';
+        html.setAttribute('data-theme', isLight ? 'dark' : 'light');
+        localStorage.setItem('theme', isLight ? 'dark' : 'light');
+    });
+
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    mobileToggle.addEventListener('click', () => mobileNav.classList.toggle('open'));
+    function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    window.addEventListener('scroll', () => {
+        document.querySelector('.navbar').style.boxShadow = window.scrollY > 50 ? '0 4px 20px rgba(0,0,0,0.3)' : 'none';
+    });
+    </script>
 </body>
 </html>
